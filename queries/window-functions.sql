@@ -5,7 +5,8 @@ SELECT
     s.nome AS servico,
     ROW_NUMBER() OVER (PARTITION BY a.cliente_id ORDER BY a.data_hora ASC) AS numero_agendamento
 FROM agendamentos a
-JOIN clientes c ON a.cliente_id = c.id;
+JOIN clientes c ON a.cliente_id = c.id
+JOIN servicos s ON a.servico_id = s.id;
 
 
 WITH barbeiros_stats AS (
