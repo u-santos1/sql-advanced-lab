@@ -38,17 +38,11 @@ sql-advanced-lab/
 ## 🚀 Como rodar
 
 ```bash
-# Subir um PostgreSQL local (ou usar um já existente)
-docker run --name sql-lab-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:16
+# Sobe o banco PostgreSQL 15-alpine (já executando o schema.sql e seed.sql automaticamente)
+docker compose up -d --build
 
-# Criar o schema
-psql -h localhost -U postgres -f schema.sql
-
-# Popular com dados de exemplo
-psql -h localhost -U postgres -f seed.sql
-
-# Rodar uma query específica
-psql -h localhost -U postgres -f queries/joins-avancados.sql
+# Para rodar as queries ou procedures pelo terminal:
+Get-Content queries\window-functions.sql | docker exec -i barbearia_db psql -U wesley -d barbearia
 ```
 
 ## ✅ Requisitos
@@ -59,14 +53,14 @@ psql -h localhost -U postgres -f queries/joins-avancados.sql
 Parte da minha trilha de estudos backend Java, focada em fundamentos que o mercado realmente pede. Depois do `java-core-playground`, este é o segundo projeto — SQL aparece como requisito em praticamente toda vaga de backend, independente da stack.
 
 ## 🗒️ Status
-🚧 Em desenvolvimento — commits incrementais, um conceito por vez.
+✅ Concluído — Todos os conceitos avançados de SQL e infraestrutura Docker foram implementados e testados.
 
 | Módulo | Status |
 |---|---|
-| Schema + Seed | 🚧 Em andamento |
-| Queries avançadas | ⬜ Não iniciado |
-| Performance | ⬜ Não iniciado |
-| Procedures | ⬜ Não iniciado |
-| Modelagem | ⬜ Não iniciado |
+| Schema + Seed | ✅ Concluído |
+| Queries avançadas | ✅ Concluído |
+| Performance | ✅ Concluído |
+| Procedures | ✅ Concluído |
+| Modelagem | ✅ Concluído |
 
 📌 Parte da minha trilha de estudos backend Java. Confira também: [java-core-playground](https://claude.ai/chat/c3c0bb9c-3278-4648-be15-def272634ece#), [spring-core-lab](https://claude.ai/chat/c3c0bb9c-3278-4648-be15-def272634ece#), [jpa-deep-dive](https://claude.ai/chat/c3c0bb9c-3278-4648-be15-def272634ece#).
